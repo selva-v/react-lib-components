@@ -1,0 +1,67 @@
+.workflow {
+  display: flex;
+  width: 1154px;
+  padding: 20px 36px;
+  border: 1px solid #f0f0f3;
+  border-radius: 10px;
+
+  .ship-icon {
+    width: 40px;
+    margin-right: 6px;
+    color: #1c1d21cc;
+    font-size: 25px;
+  }
+
+  ul {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    position: relative;
+    align-items: center;
+
+    li {
+      border-top: 2px #eee solid;
+      min-width: 101px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin: 0 30px 30px 0;
+
+      .icon {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: -10px;
+        // right: -29px;
+
+        svg {
+          fill: #eee;
+        }
+
+        .circle {
+          width: 12px;
+          height: 12px;
+          background: #fff;
+          border: 3px solid #7ce7ac;
+          border-radius: 12px;
+          margin: 0 5px 0 3px;
+
+          &::before {
+            width: 12px;
+            height: 12px;
+            border: 5px solid #fff;
+          }
+        }
+      }
+      .name {
+        font-size: 14px;
+        color: #8996af;
+        margin-top: 4px;
+      }
+    }
+  }
+}

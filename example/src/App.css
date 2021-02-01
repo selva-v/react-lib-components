@@ -1,0 +1,34 @@
+html,
+body {
+  height: 100%;
+  padding: 5px 10px;
+  margin: 0 auto;
+}
+.wrapper {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.map {
+  width: 100%;
+  height: 360px;
+}
+
+.google-map {
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  border: 1px solid #7ce7ac;
+}
+
+.google-map .info-window {
+  max-width: 180px;
+}
+
+.google-map .info-window .name {
+  margin: 0 0 10px;
+  padding: 0;
+}
+.google-map .info-window .content {
+  line-height: 1.3;
+}

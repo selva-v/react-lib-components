@@ -1,0 +1,15 @@
+html,
+body {
+  height: 100%;
+  padding: 5px 10px;
+  margin: 0 auto;
+}
+.wrapper {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+@import './GoogleMap.scss';
+@import './ShipServiceLoop.scss';
+@import './RouteStage.scss';
