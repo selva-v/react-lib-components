@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import { useJsApiLoader, GoogleMap as GoogleMap$1, Polyline, Marker, InfoWindow } from '@react-google-maps/api';
 import { faShip } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { MapContainer, TileLayer, Polyline as Polyline$1, Marker as Marker$1, Popup } from 'react-leaflet';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
@@ -342,4 +343,31 @@ var RouteStage = function RouteStage(_ref) {
   })));
 };
 
-export { GoogleMap, RouteStage, ShipServiceLoop };
+var OpenMap = function OpenMap(_ref) {
+  var mapType = _ref.mapType,
+      coordinates = _ref.coordinates;
+  var lineOptions = {
+    color: '#8996AF'
+  };
+  return /*#__PURE__*/React.createElement("div", {
+    className: "open-map"
+  }, /*#__PURE__*/React.createElement(MapContainer, {
+    center: [1.288258354433791, 103.78197312355043],
+    zoom: 3
+  }, /*#__PURE__*/React.createElement(TileLayer, {
+    attribution: "\xA9 <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors",
+    url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+  }), mapType === 'direction' ? /*#__PURE__*/React.createElement(Polyline$1, {
+    positions: coordinates.map(function (location) {
+      return [location.coords.lat, location.coords.lng];
+    }),
+    pathOptions: lineOptions
+  }) : coordinates.map(function (location) {
+    return /*#__PURE__*/React.createElement(Marker$1, {
+      key: location.id,
+      position: [location.coords.lat, location.coords.lng]
+    }, location.info && /*#__PURE__*/React.createElement(Popup, null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, location.info.name), /*#__PURE__*/React.createElement("p", null, location.info.content))));
+  })));
+};
+
+export { GoogleMap, OpenMap, RouteStage, ShipServiceLoop };

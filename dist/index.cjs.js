@@ -7,6 +7,7 @@ var propTypes = require('prop-types');
 var api = require('@react-google-maps/api');
 var freeSolidSvgIcons = require('@fortawesome/free-solid-svg-icons');
 var reactFontawesome = require('@fortawesome/react-fontawesome');
+var reactLeaflet = require('react-leaflet');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -351,6 +352,34 @@ var RouteStage = function RouteStage(_ref) {
   })));
 };
 
+var OpenMap = function OpenMap(_ref) {
+  var mapType = _ref.mapType,
+      coordinates = _ref.coordinates;
+  var lineOptions = {
+    color: '#8996AF'
+  };
+  return /*#__PURE__*/React__default['default'].createElement("div", {
+    className: "open-map"
+  }, /*#__PURE__*/React__default['default'].createElement(reactLeaflet.MapContainer, {
+    center: [1.288258354433791, 103.78197312355043],
+    zoom: 3
+  }, /*#__PURE__*/React__default['default'].createElement(reactLeaflet.TileLayer, {
+    attribution: "\xA9 <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors",
+    url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+  }), mapType === 'direction' ? /*#__PURE__*/React__default['default'].createElement(reactLeaflet.Polyline, {
+    positions: coordinates.map(function (location) {
+      return [location.coords.lat, location.coords.lng];
+    }),
+    pathOptions: lineOptions
+  }) : coordinates.map(function (location) {
+    return /*#__PURE__*/React__default['default'].createElement(reactLeaflet.Marker, {
+      key: location.id,
+      position: [location.coords.lat, location.coords.lng]
+    }, location.info && /*#__PURE__*/React__default['default'].createElement(reactLeaflet.Popup, null, /*#__PURE__*/React__default['default'].createElement("div", null, /*#__PURE__*/React__default['default'].createElement("h2", null, location.info.name), /*#__PURE__*/React__default['default'].createElement("p", null, location.info.content))));
+  })));
+};
+
 exports.GoogleMap = GoogleMap;
+exports.OpenMap = OpenMap;
 exports.RouteStage = RouteStage;
 exports.ShipServiceLoop = ShipServiceLoop;

@@ -2,6 +2,7 @@ import './styles/App.scss';
 import { GoogleMap } from 'react-lib-components';
 import { ShipServiceLoop } from 'react-lib-components';
 import { RouteStage } from 'react-lib-components';
+import { OpenMap } from 'react-lib-components';
 
 function App() {
   const coordinates = [
@@ -40,9 +41,10 @@ function App() {
       {/* <div className="flow">
         <Ports stages={ports} />
       </div> */}
-      <div className="flow">
+      {/* <div className="flow">
         <RouteStage stages={ports} />
-      </div>
+      </div> */}
+      <OpenMap mapType="direction" coordinates={coordinates} />
     </div>
   );
 }
